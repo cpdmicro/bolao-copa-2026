@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { bandeira } from "@/lib/bandeiras";
+import { bandeiraUrl } from "@/lib/bandeiras";
 
 export type Jogo = {
   id: string;
@@ -40,7 +40,11 @@ export default function JogoCard({ jogo }: { jogo: Jogo }) {
 
       <div className="flex items-center justify-between">
         <span className="flex w-2/5 items-center gap-1.5 truncate text-sm font-semibold">
-          <span className="text-lg leading-none">{bandeira(jogo.time_a)}</span>
+          <img
+            src={bandeiraUrl(jogo.time_a)}
+            alt=""
+            className="h-4 w-6 flex-shrink-0 rounded-sm object-cover"
+          />
           {jogo.time_a}
         </span>
 
@@ -52,7 +56,11 @@ export default function JogoCard({ jogo }: { jogo: Jogo }) {
 
         <span className="flex w-2/5 items-center justify-end gap-1.5 truncate text-right text-sm font-semibold">
           {jogo.time_b}
-          <span className="text-lg leading-none">{bandeira(jogo.time_b)}</span>
+          <img
+            src={bandeiraUrl(jogo.time_b)}
+            alt=""
+            className="h-4 w-6 flex-shrink-0 rounded-sm object-cover"
+          />
         </span>
       </div>
 
