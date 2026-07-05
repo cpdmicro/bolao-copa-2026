@@ -1,6 +1,7 @@
 import { createClient } from "@/lib/supabase/server";
 import PalpiteForm from "@/components/PalpiteForm";
 import { notFound } from "next/navigation";
+import { bandeira } from "@/lib/bandeiras";
 
 export default async function JogoPage({ params }: { params: { id: string } }) {
   const supabase = createClient();
@@ -39,7 +40,7 @@ export default async function JogoPage({ params }: { params: { id: string } }) {
       <div>
         <p className="text-xs uppercase tracking-wide text-carvao/50">{jogo.fase}</p>
         <h1 className="font-display text-lg text-campo">
-          {jogo.time_a} x {jogo.time_b}
+          {bandeira(jogo.time_a)} {jogo.time_a} x {jogo.time_b} {bandeira(jogo.time_b)}
         </h1>
         <p className="text-sm text-carvao/60">{dataFormatada}</p>
       </div>
