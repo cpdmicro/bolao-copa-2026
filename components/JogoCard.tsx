@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { bandeira } from "@/lib/bandeiras";
 
 export type Jogo = {
   id: string;
@@ -38,7 +39,10 @@ export default function JogoCard({ jogo }: { jogo: Jogo }) {
       </div>
 
       <div className="flex items-center justify-between">
-        <span className="w-2/5 truncate text-sm font-semibold">{jogo.time_a}</span>
+        <span className="flex w-2/5 items-center gap-1.5 truncate text-sm font-semibold">
+          <span className="text-lg leading-none">{bandeira(jogo.time_a)}</span>
+          {jogo.time_a}
+        </span>
 
         <span className="marcador text-lg font-bold text-campo">
           {jogo.encerrado
@@ -46,8 +50,9 @@ export default function JogoCard({ jogo }: { jogo: Jogo }) {
             : "vs"}
         </span>
 
-        <span className="w-2/5 truncate text-right text-sm font-semibold">
+        <span className="flex w-2/5 items-center justify-end gap-1.5 truncate text-right text-sm font-semibold">
           {jogo.time_b}
+          <span className="text-lg leading-none">{bandeira(jogo.time_b)}</span>
         </span>
       </div>
 

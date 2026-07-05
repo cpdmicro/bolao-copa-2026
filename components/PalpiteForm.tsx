@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { createClient } from "@/lib/supabase/client";
+import { bandeira } from "@/lib/bandeiras";
 
 type Props = {
   jogoId: string;
@@ -79,6 +80,7 @@ export default function PalpiteForm({
     <div className="rounded-card border border-campo/10 bg-white p-5">
       <div className="mb-4 flex items-center justify-center gap-4">
         <div className="flex flex-col items-center gap-1">
+          <span className="text-2xl leading-none">{bandeira(timeA)}</span>
           <span className="text-sm font-semibold">{timeA}</span>
           <input
             type="number"
@@ -90,9 +92,10 @@ export default function PalpiteForm({
           />
         </div>
 
-        <span className="pt-6 text-lg font-bold text-carvao/40">x</span>
+        <span className="pt-9 text-lg font-bold text-carvao/40">x</span>
 
         <div className="flex flex-col items-center gap-1">
+          <span className="text-2xl leading-none">{bandeira(timeB)}</span>
           <span className="text-sm font-semibold">{timeB}</span>
           <input
             type="number"
