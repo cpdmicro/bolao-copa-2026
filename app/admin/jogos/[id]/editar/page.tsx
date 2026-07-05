@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { createClient } from "@/lib/supabase/client";
-import { bandeira } from "@/lib/bandeiras";
+import { bandeiraUrl } from "@/lib/bandeiras";
 
 export default function EditarJogoPage() {
   const { id } = useParams<{ id: string }>();
@@ -55,8 +55,10 @@ export default function EditarJogoPage() {
 
   return (
     <div className="space-y-4">
-      <h1 className="font-display text-xl text-campo">
-        {bandeira(jogo.time_a)} {jogo.time_a} x {jogo.time_b} {bandeira(jogo.time_b)}
+      <h1 className="flex items-center gap-2 font-display text-xl text-campo">
+        <img src={bandeiraUrl(jogo.time_a)} alt="" className="h-5 w-8 rounded-sm object-cover" />
+        {jogo.time_a} x {jogo.time_b}
+        <img src={bandeiraUrl(jogo.time_b)} alt="" className="h-5 w-8 rounded-sm object-cover" />
       </h1>
       <p className="text-sm text-carvao/60">
         {new Date(jogo.data_hora).toLocaleString("pt-BR")}
